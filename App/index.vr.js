@@ -15,8 +15,13 @@ export default class App extends React.Component {
   render() {
     return (
       <View>
-        <Pano 
+        <Pano
           source={asset('mohaka.jpg')}
+          style={{
+            transform:[
+              {rotateY: -10}
+            ]
+          }}
           onLoad={() => { console.log('Loaded')} }
         />
         <DirectionalLight 
@@ -41,7 +46,7 @@ export default class App extends React.Component {
         />
         <Text
           style = {{
-            transform: [{translateZ: -1.25}],
+            transform: [{translate: [0.25,0.25,-1]}],
             layoutOrigin: [0.5, 0.5]
           }}
         >
@@ -54,7 +59,8 @@ export default class App extends React.Component {
             backgroundColor: '#FFF',
             layoutOrigin: [0.5, 0.5],
             transform: [
-              {translate: [2, 0, -3]}
+              {translate: [2.5, 0, -3]},
+              {rotateY: -25}
             ]
           }}
           onInput={(event) => {
