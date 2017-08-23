@@ -14,10 +14,10 @@ export default class App extends React.Component {
   render() {
     return (
       <View>
-        {/* <Pano 
+        <Pano 
           source={asset('mohaka.jpg')}
           onLoad={() => { console.log('Loaded')} }
-        /> */}
+        />
         <DirectionalLight 
           style={{
             transform: [{translateX: -1000}]
@@ -26,24 +26,26 @@ export default class App extends React.Component {
         <AmbientLight intensity={ 2.6 } />
         <Model
           source={{
-            obj: asset('moon.obj')
+            obj: asset('moon.obj'),
+            mtl: asset('moon.mtl')
           }}
           style={{
             transform: [
-              {translate: [0, -1, -2]},
+              {translate: [1, 3, -3]},
               {scale: 0.005},
+              {rotateY: -180}
             ],
           }}
-          wireframe
+          lit
         />
-        {/* <Text
+        <Text
           style = {{
             transform: [{translateZ: -1.25}],
             layoutOrigin: [0.5, 0.5]
           }}
         >
           Mangatutu Hot Springs
-        </Text> */}
+        </Text>
       </View>
     )
   }
