@@ -8,8 +8,12 @@ import {
   Model,
   AmbientLight,
   DirectionalLight,
-  Image
+  Image,
+  VrButton,
+  NativeModules,
 } from 'react-vr'
+
+const url = 'https://www.google.co.nz/maps/place/Mangatutu+Hot+Springs,+Kaweka+Forest+Park+4179/@-39.1825489,176.4588216,13z/data=!4m2!3m1!1s0x6d6970d56741a2bf:0xe95c3e17993c53a1?hl=en-NZ'
 
 export default class App extends React.Component {
   render() {
@@ -37,7 +41,7 @@ export default class App extends React.Component {
           }}
           style={{
             transform: [
-              {translate: [1, 3, -3]},
+              {translate: [25, 20, 10]},
               {scale: 0.005},
               {rotateY: -180}
             ],
@@ -63,17 +67,21 @@ export default class App extends React.Component {
               {rotateY: -25}
             ]
           }}
-          onInput={(event) => {
-            console.log('type', event.nativeEvent.inputEvent.type)
-            console.log('eventType', event.nativeEvent.inputEvent.eventType)
-          }}
         >
+         <VrButton
+            onClick={() => {
+              NativeModules.LinkingManager.openURL(url)
+            }}
+            onLongClick={() => {console.log ('clicked long')}}
+            onButtonPress={() => {console.log('pressed')}}
+            onButtonRelease={() => {console.log('released')}}
+          > 
           <Image 
             source={asset('location.png')} 
             style={{
               height: 1.8
             }}
-          />
+          /> 
           <Text
             style={{
               color: '#333',
@@ -81,8 +89,9 @@ export default class App extends React.Component {
               textAlign: 'center'
             }}
           >
-            Click Here to find this hidden gem
+            Click Here to get Directions
           </Text>
+          </VrButton>
         </View>
       </View>
     )
