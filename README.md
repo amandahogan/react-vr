@@ -1,1 +1,1 @@
-[I'm an inline-style link with title](https://naturevr.netlify.com "Live")
+[Live Demo](https://naturevr.netlify.com "Live")
